@@ -1,1 +1,3 @@
 NOT_ONLINE
+*.pyc
+*output_log.txt

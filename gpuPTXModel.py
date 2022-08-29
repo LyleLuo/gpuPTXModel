@@ -36,10 +36,10 @@ def main():
     parser.add_argument('--never_stop', action='store_const', const=True, default=False)
     parser.add_argument('--no_output', action='store_const', const=True, default=False)
     parser.add_argument('--pc', action='store_const', const=True, default=False)
-    parser.add_argument('--encoder_file', type=str, default='')
-    parser.add_argument('--time_dvfs_file', type=str, default='')
-    parser.add_argument('--pow_dvfs_file', type=str, default='')
-    parser.add_argument('--energy_dvfs_file', type=str, default='')
+    parser.add_argument('--encoder_file', type=str, default='config')
+    parser.add_argument('--time_dvfs_file', type=str, default='config')
+    parser.add_argument('--pow_dvfs_file', type=str, default='config')
+    parser.add_argument('--energy_dvfs_file', type=str, default='config')
 
     args = vars(parser.parse_args())
     print(args)
@@ -120,7 +120,7 @@ def main():
         config = rf.readISA('model_configs/encoder/%s.txt' %(encoder_config_file))
         encoder_params = {'embed_size': int(config[0]), 'learning_rate': float(config[1]), 'dropout_prob': float(config[2]), 'optimizer_name': config[3], 'num_layers': int(config[4]), 'hidden_size': int(config[5]), 'batch_size': int(config[6])}
     else:
-        encoder_params = {'embed_size': embed_size, 'learning_rate': learning_rate_encoder, 'dropout_prob': dropout_prob_encoder, 'optimizer_name': optimizer_encoder, 'num_layers': num_layers_encoder, 'hidden_size': hidden_size_encoder, 'batch_size': batch_size}
+        encoder_params = {'embed_size': 15, 'learning_rate': 0.005, 'dropout_prob': 0, 'optimizer_name': 'Adam', 'num_layers': 2, 'hidden_size': 50, 'batch_size': 8}
     encoder_params['vocab_size'] = vocab_size
 
 
